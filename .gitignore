@@ -1,5 +1,5 @@
 __pycache__
 datasets
-*.csv
 *.log
 .idea
+venv
