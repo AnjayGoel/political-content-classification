@@ -37,7 +37,7 @@ class Classifier:
         result = result.strip()
         return result
 
-    def get_most_common(self, compound_word):  # get most frequent word from a phrase.
+    def resolve_compound_word(self, compound_word):  # get most frequent word from a phrase.
         if len(compound_word) < 2:
             return compound_word
         word_freq = 0
@@ -53,10 +53,10 @@ class Classifier:
     def get_rel_freq(self, word):
         return self.rel_freq_dict.get(word, 0)
 
-    def split_words(self, word_list):
+    def make_final_word_list(self, word_list):
         ret_list = []
         for i in word_list:
-            ret_list.append(self.get_most_common(i))
+            ret_list.append(self.resolve_compound_word(i))
         return ret_list
 
     def get_x_from_word_list(self, word_list):
@@ -71,14 +71,14 @@ class Classifier:
 
     # Extract keywords using textrank implementation in gensim
     @staticmethod
-    def keywords_tr(text):
+    def get_keywords_textrank(text):
         text_keys = keywords(text, ratio=1, lemmatize=True, scores=True)
         text_keys = [tup[0] for tup in text_keys[:10]]
         return text_keys
 
     def predict(self, text):
-        text_keys = self.keywords_tr(text)
-        text_keys = self.split_words(text_keys)[:10]
+        text_keys = self.get_keywords_textrank(text)
+        text_keys = self.make_final_word_list(text_keys)[:10]
         if len(text_keys) < 2:
             raise ("Text not long enough", "SHORT_TEXT")
         else:
