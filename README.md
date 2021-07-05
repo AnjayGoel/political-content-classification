@@ -5,7 +5,7 @@ Classifying us centric political posts on reddit.
 Annoyed by US centric news/political posts on reddit.
 
 #### How was dataset generated:
-* Mine data using PushShift and Reddit API and BigQuery and merge them.
+* Mine data using PushShift, Reddit API and BigQuery and merge them.
 * Label posts base on subreddit.
 * Extract keywords using TextRank and generate a frequency table.
 * Train models using relative frequencies of extracted keywords.
@@ -22,5 +22,4 @@ Classifier.predict(text)
 Final dataset can be found [here](https://drive.google.com/drive/folders/1J6tVACDq4OvV-8n8UtfnxKcyH0Nll0kr?usp=sharing).
 
 #### TODO
-
 Make a browser plugin.
