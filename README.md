@@ -1,20 +1,25 @@
 # Reddit Post Classification
-Classifying political posts on reddit.
-
-#### Steps:
-
-* Mine data using PushShift and Reddit API.
-* Extract keywords using TextRank
-* Build a simple logistic regression on relative word frequencies.
+Classifying us centric political posts on reddit.
 
 #### Motivation
+Annoyed by US centric news/political posts on reddit.
 
-Annoyed by US centric political post on reddit. 
+#### How was dataset generated:
+* Mine data using PushShift and Reddit API and BigQuery and merge them.
+* Label posts base on subreddit.
+* Extract keywords using TextRank and generate a frequency table.
+* Train models using relative frequencies of extracted keywords.
+* A simple logistic regression on relative word frequencies is giving ~94% accuracy in classification.
 
-#### Use Case
-A small final word frequency table (~2 MB) and great accuracy of a simple logistic regression. It can be used to classify and hide posts on user's end itself without consuming using any significant amount of resources.
 
-Final dataset can be found [here](https://www.kaggle.com/anjay23/word-frequency-in-political-and-nonpol-subreddit).
+#### How to use
+Included a logistic regression model.  
+Example: 
+```
+from classifier import Classifier
+Classifier.predict(text)
+```
+Final dataset can be found [here](https://drive.google.com/drive/folders/1J6tVACDq4OvV-8n8UtfnxKcyH0Nll0kr?usp=sharing).
 
 #### TODO
 
