@@ -1,4 +1,4 @@
-# Reddit Post Classification
+# Political Content Classification
 Classifying us centric political posts on reddit.
 
 #### Motivation
